@@ -38,7 +38,7 @@ describe('CreateChatComponent', () => {
                     name: "chat 3",
                     countOfUnreadMessages: 0
                 },
-            ]) 
+            ])
         });
         fakeAuthService = jasmine.createSpyObj<AuthService>('AuthService', {
             getUser: of<UserValue>(fakeUser),
@@ -62,7 +62,6 @@ describe('CreateChatComponent', () => {
     });
 
     it('should create component', () => {
-        debugger;
         const fixture = TestBed.createComponent(CreateChatComponent);
         const instance = fixture.componentInstance;
         expect(instance).toBeTruthy();

@@ -4,6 +4,7 @@ import { AuthenticationResult, InteractionStatus, InteractionType, PopupRequest,
 import { HttpClient } from '@angular/common/http';
 import { MenuItem } from 'primeng/api';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -11,21 +12,35 @@ import { filter, Subject, takeUntil } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  items: MenuItem[] = [
+  items: MenuItem[] = [];
+
+  itemsForAnonymous: MenuItem[] = [
     {
       label: 'home',
-      routerLink: '/'
+      routerLink: '/',
     },
     {
       label: 'login',
       command: () => {this.login()}
+    }
+  ];
+
+  itemsForUser: MenuItem[] = [
+    {
+      label: 'home',
+      routerLink: '/',
     },
     {
       label: 'logout',
-      command: () => {this.logout()}
+      command: () => {this.logout()},
     },
     {
-      label: 'profile'
+      label: 'profile',
+      routerLink: 'profile'
+    },
+    {
+      label: 'dashboard',
+      routerLink: 'dashboard'
     }
   ]
 
@@ -35,12 +50,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService,
-    private http: HttpClient) { }
+    private msalBroadcastService: MsalBroadcastService) { }
 
     ngOnInit(): void {
       this.isIframe = window !== window.parent && !window.opener;
-      debugger
       this.msalBroadcastService.inProgress$
         .pipe(
           filter((status: InteractionStatus) => status === InteractionStatus.None),
@@ -52,30 +65,14 @@ export class HeaderComponent implements OnInit {
     }
 
     setLoginDisplay() {
-      const accounts = this.authService.instance.getAllAccounts();
-      this.loginDisplay = accounts.length > 0;
-      const loginBtn = this.items[1];
-      const logoutBtn = this.items[2];
-      const profileBtn = this.items[3];
-
-      loginBtn.visible = !this.loginDisplay;
-      logoutBtn.visible = this.loginDisplay;
-      profileBtn.visible = this.loginDisplay;
-
-
-
+      const acc = this.authService.instance.getActiveAccount();
+      this.loginDisplay = !!acc;
       if (this.loginDisplay) {
-        const acc = accounts[0];
-        this.http.get('https://localhost:7168/api')
-        .subscribe({
-          next: (some: any) => {
-            debugger;
-          },
-          error: err => {
-            debugger;
-          }
-        })
+        const profileBtn = this.itemsForUser[2];
+        this.items = this.itemsForUser;
         profileBtn.label = `profile ${acc.name}`
+      } else {
+        this.items = this.itemsForAnonymous;
       }
     }
 
@@ -85,11 +82,13 @@ export class HeaderComponent implements OnInit {
           this.authService.loginPopup({ ...this.msalGuardConfig.authRequest } as PopupRequest)
             .subscribe((response: AuthenticationResult) => {
               this.authService.instance.setActiveAccount(response.account);
+              this.setLoginDisplay();
             });
         } else {
           this.authService.loginPopup()
             .subscribe((response: AuthenticationResult) => {
               this.authService.instance.setActiveAccount(response.account);
+              this.setLoginDisplay();
             });
         }
       } else {

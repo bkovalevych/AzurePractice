@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row d-flex justify-content-center align-items-center" style="margin-top: 20px;">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>User Info</h3>
+        </div>
+        <div class="card-body">
+          <dl class="row" *ngIf="user">
+            <dt class="col-3">User Principal Name</dt>
+            <dd class="col-9">{{user.userPrincipalName}}</dd>
+            <dt class="col-3">Display Name</dt>
+            <dd class="col-9">{{user.displayName}}</dd>
+          </dl>
+          <div *ngIf="!user">
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
