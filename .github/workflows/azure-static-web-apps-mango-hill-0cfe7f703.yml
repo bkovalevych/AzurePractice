@@ -4,10 +4,16 @@ on:
   push:
     branches:
       - master
+    paths:
+      - azure-spa/**
+      - .github/workflows/azure-static-web-apps-mango-hill-0cfe7f703.yml
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - master
+    paths:
+      - azure-spa/**
+      - .github/workflows/azure-static-web-apps-mango-hill-0cfe7f703.yml
 
 jobs:
   build_and_deploy_job:
