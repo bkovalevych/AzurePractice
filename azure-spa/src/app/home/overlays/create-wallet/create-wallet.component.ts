@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { WalletService } from 'src/app/core/services/api/wallet.service';
@@ -33,14 +34,14 @@ export class CreateChatComponent implements OnInit {
       this.errors.push("Wallet name is required");
     }
     if (this.errors.length == 0) {
-      await this.createWallet(this.walletName);
-      this.toDefault();
-      this.visibleChanged.next(false);
+      this.walletService.createWallet(this.walletName)
+      .subscribe({next: wallet => {
+        this.toDefault();
+        this.visibleChanged.next(false);
+      }, error: (err : HttpErrorResponse) => {
+        this.errors.push(err.error);
+      }});
     }
-  }
-
-  async createWallet(name: string) {
-    return firstValueFrom(this.walletService.createWallet(name));
   }
 
   ngOnInit(): void {
