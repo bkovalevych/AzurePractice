@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[] = [];
+  createwalletDialogShow = false;
 
   itemsForAnonymous: MenuItem[] = [
     {
@@ -37,6 +38,11 @@ export class HeaderComponent implements OnInit {
     {
       label: 'profile',
       routerLink: 'profile'
+    },
+    {
+      label: 'create new wallet',
+      routerLink: '/',
+      queryParams: {openPopupToCreateWallet: true}
     },
     {
       label: 'dashboard',

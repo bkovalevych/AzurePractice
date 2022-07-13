@@ -6,5 +6,7 @@ export const environment = {
     authority: 'https://login.microsoftonline.com/940a914e-05a6-4807-8e22-374cf7a71990',
     redirectUri: 'https://mango-hill-0cfe7f703.1.azurestaticapps.net/'
   },
-  graphUrl: 'https://graph.microsoft.com/v1.0/me'
+  graphUrl: 'https://graph.microsoft.com/v1.0/me',
+  functionsUrl: 'https://azurepracticecreatewalletfunction20220713112026.azurewebsites.net/api',
+  functionsKey: 'xirPwkfpgFSbBWuh5fqrVdFFcg2_zg8tBHiEpyOaDkwCAzFuRcZe6Q=='
 };
