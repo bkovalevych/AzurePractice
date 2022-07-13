@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@microsoft/signalr';
 import { Subject, takeUntil } from 'rxjs';
 import { UserValue } from 'src/app/core/models/values/user-value';
 import { WalletValue } from 'src/app/core/models/values/wallet-value';
