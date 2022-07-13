@@ -26,13 +26,17 @@ export const msalConfig: Configuration = {
 
 export const protectedResources = [
   {
-    endpoint: 'https://localhost:7168/api',
+    endpoint: `${environment.baseUrl}`,
     scopes: ['api://ab9b529d-898d-428a-8eb8-eec1a488a4da/userAccess']
   },
   {
     endpoint: 'https://graph.microsoft.com/v1.0/me',
     scopes: ['user.read']
-  }
+  },
+  // {
+  //   endpoint: environment.createWalletUrl,
+  //   scopes: ['user.read']
+  // }
 ]
 
 export const loginRequest = {

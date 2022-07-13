@@ -10,7 +10,9 @@ export const environment = {
     authority: 'https://login.microsoftonline.com/940a914e-05a6-4807-8e22-374cf7a71990',
     redirectUri: 'http://localhost:4200/'
   },
-  graphUrl: 'https://graph.microsoft.com/v1.0/me'
+  graphUrl: 'https://graph.microsoft.com/v1.0/me',
+  functionsUrl: 'http://localhost:7298/api',
+  functionsKey: 'key'
 };
 
 /*

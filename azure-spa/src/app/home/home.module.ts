@@ -12,7 +12,7 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { DialogModule } from 'primeng/dialog'
 import { AutoCompleteModule } from 'primeng/autocomplete'
-import { CreateChatComponent } from './overlays/create-chat/create-chat.component'
+import { CreateChatComponent } from './overlays/create-wallet/create-wallet.component'
 
 @NgModule({
   declarations: [
