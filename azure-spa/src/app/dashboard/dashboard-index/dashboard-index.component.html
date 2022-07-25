@@ -1,9 +1,22 @@
+<app-create-transaction-dialog [visible]="isOpenedPopupToCreateTransaction" (visibleChanged)="onCreateTransactionDialogVisibilityChanged($event)"></app-create-transaction-dialog>
+
 <div class="container">
+  <button pButton  [routerLink]="[]" [queryParams]="{openPopupToCreateTransaction: true}">Add Transaction</button>
   <div class="row d-flex justify-content-center align-items-center" style="margin-top: 20px;">
     <div class="col-12">
       <div class="card">
         <div class="card-header">Dashboard</div>
         <div class="card-body row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header ">
+                Wallets
+              </div>
+              <div class="card-body ">
+                <app-dashboard-wallets></app-dashboard-wallets>
+              </div>
+            </div>
+          </div>
           <div class="col-4">
             <div class="card">
               <div class="card-header ">

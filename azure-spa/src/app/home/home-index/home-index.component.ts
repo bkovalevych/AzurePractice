@@ -2,8 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserValue } from 'src/app/core/models/values/user-value';
-import { WalletValue } from 'src/app/core/models/values/wallet-value';
-import { WalletService } from 'src/app/core/services/api/wallet.service';
 
 @Component({
   selector: 'app-home-index',
@@ -13,14 +11,13 @@ import { WalletService } from 'src/app/core/services/api/wallet.service';
 export class HomeIndexComponent implements OnInit, OnDestroy {
   user: UserValue;
   openPopupToCreateWallet = false;
-  wallets: WalletValue[];
+
 
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private walletService: WalletService) { }
+    private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -29,8 +26,6 @@ export class HomeIndexComponent implements OnInit, OnDestroy {
     .subscribe(queryParams => {
       this.oncreateWalletModalVisibilityChanged(queryParams['openPopupToCreateWallet']);
     })
-
-    this.loadWallets();
   }
 
   oncreateWalletModalVisibilityChanged(visible: boolean) {
@@ -43,13 +38,6 @@ export class HomeIndexComponent implements OnInit, OnDestroy {
         queryParamsHandling: 'merge'
       })
     }
-  }
-
-  loadWallets() {
-    this.walletService.getWallets()
-    .subscribe(payload => {
-      this.wallets = payload;
-    })
   }
 
   ngOnDestroy(): void {

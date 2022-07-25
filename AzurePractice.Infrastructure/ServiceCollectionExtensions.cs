@@ -16,6 +16,13 @@ namespace AzurePractice.Infrastructure
                     configuration["CosmosDbSettings:Key"],
                     configuration["CosmosDbSettings:DataBase"]);
             });
+
+            services.AddDbContext<TransactionsDbContext>(options =>
+            {
+                options.UseCosmos(configuration["CosmosDbSettings:Endpoint"],
+                    configuration["CosmosDbSettings:Key"],
+                    configuration["CosmosDbSettings:DataBase"]);
+            });
             return services;
         }
     }

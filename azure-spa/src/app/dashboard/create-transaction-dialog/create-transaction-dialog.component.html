@@ -1,0 +1,42 @@
+<p-dialog [visible]="visible" [closable]="false" [modal]="true" [blockScroll]="true" [resizable]="false" >
+  <ng-template pTemplate="header">
+      Create new wallet
+  </ng-template>
+  <div class="container" style="width: 300px">
+    <form [formGroup]="form">
+      <div class="row">
+        <label class="col-12">Type</label>
+        <p-dropdown styleClass="col-12" appendTo="body" formControlName="type"  [options]="transactionTypes" ></p-dropdown>
+      </div>
+      <div class="row">
+        <label class="col-12">Wallet</label>
+        <p-dropdown styleClass="col-12" appendTo="body" formControlName="walletId"
+          [options]="wallets"
+          optionLabel="name"
+          optionValue="id"></p-dropdown>
+      </div>
+      <div class="row">
+        <label class="col-12">Topic</label>
+        <div class="col-12">
+          <input pInputText formControlName="topic" style="width: 100%;"/>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-12">Amount</label>
+        <p-inputNumber styleClass="col-12" formControlName="amount" [min]="0.01" [max]="1000"></p-inputNumber>
+      </div>
+      <div class="row">
+        <label class="col-12">Tax</label>
+        <p-inputNumber styleClass="col-12" formControlName="tax" [min]="0.01" [max]="1000"></p-inputNumber>
+      </div>
+    </form>
+      <div *ngIf="errors">
+          <small class="p-error col-12" *ngFor="let error of errors">{{error}}<br/></small>
+      </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+      <button pButton (click)="cancel()" label="Cancel"></button>
+      <button pButton (click)="save()" label="Create"></button>
+  </ng-template>
+</p-dialog>
