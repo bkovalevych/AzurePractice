@@ -10,12 +10,16 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown'
 import { InputNumberModule } from 'primeng/inputnumber'
 import { InputTextModule } from 'primeng/inputtext'
+import { ChartModule } from 'primeng/chart';
+import { DashboardChartsComponent } from './dashboard-charts/dashboard-charts.component';
+import { TabViewModule } from 'primeng/tabview'
 
 @NgModule({
   declarations: [
     DashboardIndexComponent,
     DashboardWalletsComponent,
-    CreateTransactionDialogComponent
+    CreateTransactionDialogComponent,
+    DashboardChartsComponent
   ],
   imports: [
     DropdownModule,
@@ -24,7 +28,9 @@ import { InputTextModule } from 'primeng/inputtext'
     SharedModule,
     DashboardRoutingModule,
     InputNumberModule,
-    InputTextModule
+    InputTextModule,
+    ChartModule,
+    TabViewModule
   ]
 })
 export class DashboardModule { }

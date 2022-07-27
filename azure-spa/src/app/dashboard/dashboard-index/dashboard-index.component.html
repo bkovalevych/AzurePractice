@@ -1,5 +1,4 @@
 <app-create-transaction-dialog [visible]="isOpenedPopupToCreateTransaction" (visibleChanged)="onCreateTransactionDialogVisibilityChanged($event)"></app-create-transaction-dialog>
-
 <div class="container">
   <button pButton  [routerLink]="[]" [queryParams]="{openPopupToCreateTransaction: true}">Add Transaction</button>
   <div class="row d-flex justify-content-center align-items-center" style="margin-top: 20px;">
@@ -17,32 +16,7 @@
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="card">
-              <div class="card-header ">
-                Invoices Dashboard
-              </div>
-              <div class="card-body ">
-                will be here
-              </div>
-              <div class="card-footer">
-                info
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
-              <div class="card-header">
-                Expenses
-              </div>
-              <div class="card-body">
-                Will be here
-              </div>
-              <div class="card-footer">
-                info
-              </div>
-            </div>
-          </div>
+          <app-dashboard-charts></app-dashboard-charts>
         </div>
       </div>
     </div>
