@@ -50,7 +50,7 @@ namespace AzurePractice.CreateWalletFunction
             {
                 var userId = req.Query["userId"][0];
                 return await _context.Wallets
-                    .Where(it => it.UserId == userId)
+                    .Where(it => userId.Equals(it.UserId) )
                     .ToListAsync();
             }).Match(
                 wallets => new ObjectResult(wallets),
@@ -85,6 +85,7 @@ namespace AzurePractice.CreateWalletFunction
             {
                 wallet.Balance = _initialBalance;
                 wallet.id = Guid.NewGuid().ToString();
+                wallet.CreatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                 await _context.Wallets.AddAsync(wallet);
                 await _context.SaveChangesAsync();
 

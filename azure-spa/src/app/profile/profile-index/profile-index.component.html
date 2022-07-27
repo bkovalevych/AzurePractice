@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center align-items-center" style="margin-top: 20px;">
-    <div class="col-6">
+    <div class="col-9">
       <div class="card">
         <div class="card-header">
           <h3>User Info</h3>
@@ -11,10 +11,23 @@
             <dd class="col-9">{{user.userPrincipalName}}</dd>
             <dt class="col-3">Display Name</dt>
             <dd class="col-9">{{user.displayName}}</dd>
+            <dt class="col-3">Email</dt>
+            <dd class="col-9">
+              <div *ngIf="!emailFieldOpened">
+                {{email}}
+                <button class="col-3 p-button" (click)="openToEdit()">Edit</button>
+              </div>
+              <div *ngIf="emailFieldOpened">
+                <input class="col-10" type="text" pInputText [(ngModel)]="inputEmail">
+                <button class="col-3 p-button" (click)="onSave()">Save</button>
+                <button class="col-4 p-button p-button-danger" (click)="toDefault()">Cancel</button>
+              </div>
+            </dd>
           </dl>
           <div *ngIf="!user">
             Loading...
           </div>
+
         </div>
       </div>
     </div>

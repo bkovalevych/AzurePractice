@@ -1,0 +1,54 @@
+<h3>Line charts for last 7 days</h3>
+<p-tabView *ngIf="walletsLineCharts">
+  <p-tabPanel [header]="lineCharts.tabHeader" *ngFor="let lineCharts of walletsLineCharts; let i = index" [selected]="i == 0">
+    <div class="row">
+      <div class="col-6" *ngFor="let lineChart of lineCharts.tabContent">
+        <div class="card">
+          <div class="card-header">
+            {{lineChart.chartHeader}}
+          </div>
+          <div class="card-body">
+            <p-chart type="line" [data]="lineChart.chart"></p-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>
+
+<div class="row">
+  <div class="col-6">
+    <h3>Bar charts for last 7 days</h3>
+    <p-tabView *ngIf="walletsStackedCharts">
+      <p-tabPanel [header]="lineCharts.tabHeader" *ngFor="let lineCharts of walletsStackedCharts; let i = index" [selected]="i == 0">
+          <div class="card" *ngFor="let barChart of lineCharts.tabContent">
+            <div class="card-header">
+              {{barChart.chartHeader}}
+            </div>
+            <div class="card-body">
+              <p-chart type="bar" [data]="barChart.chart"
+                [options]="stackedOptions"></p-chart>
+            </div>
+          </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  <div class="col-6">
+    <h3>Pie charts for last 7 days</h3>
+    <p-tabView *ngIf="walletsPieCharts">
+      <p-tabPanel [header]="pieCharts.tabHeader" *ngFor="let pieCharts of walletsPieCharts; let i = index" [selected]="i == 0">
+        <div class="card" *ngFor="let pieChart of pieCharts.tabContent">
+          <div class="card-header">
+            {{pieChart.chartHeader}}
+          </div>
+          <div class="card-body">
+            <p-chart type="pie" [data]="pieChart.chart"></p-chart>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+
+
+

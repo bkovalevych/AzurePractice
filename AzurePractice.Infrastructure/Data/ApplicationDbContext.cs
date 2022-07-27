@@ -11,5 +11,7 @@ namespace AzurePractice.Infrastructure.Data
         }
 
         public DbSet<Wallet> Wallets { get; set; }
+
+        public DbSet<UserEmail> UserEmails { get; set; }
     }
 }
