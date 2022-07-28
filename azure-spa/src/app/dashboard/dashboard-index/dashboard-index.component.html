@@ -6,17 +6,17 @@
       <div class="card">
         <div class="card-header">Dashboard</div>
         <div class="card-body row">
-          <div class="col-4">
+          <div class="col-12">
             <div class="card">
               <div class="card-header ">
                 Wallets
               </div>
               <div class="card-body ">
-                <app-dashboard-wallets></app-dashboard-wallets>
+                <app-dashboard-wallets (selectedWalletChanged)="onSelectedWallet($event)"></app-dashboard-wallets>
               </div>
             </div>
           </div>
-          <app-dashboard-charts></app-dashboard-charts>
+          <app-dashboard-charts [selectedWallet]="selectedWallet"></app-dashboard-charts>
         </div>
       </div>
     </div>

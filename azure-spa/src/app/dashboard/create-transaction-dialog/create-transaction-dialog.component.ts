@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { getTopics, TopicValue } from 'src/app/core/models/values/topic-value';
 import { WalletValue } from 'src/app/core/models/values/wallet-value';
 import { WalletService } from 'src/app/core/services/api/wallet.service';
 
@@ -16,6 +17,7 @@ export class CreateTransactionDialogComponent implements OnInit {
   transactionTypes = ['expense', 'invoice'];
   errors: string[];
   wallets: WalletValue[] = [];
+  topics: TopicValue[] = getTopics();
 
   constructor(private walletService: WalletService,
     private formBuilder: FormBuilder) { }

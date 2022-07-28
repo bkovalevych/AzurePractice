@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { WalletValue } from 'src/app/core/models/values/wallet-value';
 
 @Component({
   selector: 'app-dashboard-index',
@@ -10,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class DashboardIndexComponent implements OnInit, OnDestroy {
   isOpenedPopupToCreateTransaction: boolean = false;
   private readonly _destroying$ = new Subject<void>();
-
+  selectedWallet: WalletValue;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -34,6 +35,10 @@ export class DashboardIndexComponent implements OnInit, OnDestroy {
         queryParamsHandling: 'merge'
       })
     }
+  }
+
+  onSelectedWallet(wallet: WalletValue) {
+    this.selectedWallet = wallet;
   }
 
   ngOnDestroy(): void {
