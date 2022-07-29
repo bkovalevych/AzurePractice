@@ -2,7 +2,7 @@ name: Build and deploy .NET Core Function App to Azure functions app
 on:
   push:
     branches:
-    - task2/implement-create-wallet
+    - master
 env:
   AZURE_FUNCTIONAPP_NAME: AzurePracticeCreateWalletFunction20220713112026
   AZURE_FUNCTIONAPP_PACKAGE_PATH: AzurePractice.CreateWalletFunction/publish
