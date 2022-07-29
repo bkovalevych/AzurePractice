@@ -6,7 +6,9 @@
     <form [formGroup]="form">
       <div class="row">
         <label class="col-12">Type</label>
-        <p-dropdown styleClass="col-12" appendTo="body" formControlName="type"  [options]="transactionTypes" ></p-dropdown>
+        <p-dropdown styleClass="col-12" appendTo="body" formControlName="type"  [options]="transactionTypes"
+          optionLabel="label"
+          optionValue="value"></p-dropdown>
       </div>
       <div class="row">
         <label class="col-12">Wallet</label>

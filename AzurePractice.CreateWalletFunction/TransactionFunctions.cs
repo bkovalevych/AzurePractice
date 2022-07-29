@@ -170,7 +170,7 @@ namespace AzurePractice.CreateWalletFunction
                         {
                             new
                             {
-                                Label = "invoice",
+                                Label = "income",
                                 Data = labels.GroupJoin(
                                     walletGrouping.Where(it => it.Type == "invoice"),
                                     outer => outer,

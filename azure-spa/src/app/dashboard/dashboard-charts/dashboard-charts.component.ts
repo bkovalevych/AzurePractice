@@ -86,14 +86,14 @@ export class DashboardChartsComponent implements OnInit, OnChanges {
             chartHeader: "Expenses"
           },
           {
-            chartHeader: "Invoices"
+            chartHeader: "Incomes"
           }
         ]
       }
     }
     let composer = new LineChartComposer();
     let expenses = composer.compose(chart.expenses, dateFormat);
-    let invoices = composer.compose(chart.invoices, dateFormat);
+    let incomes = composer.compose(chart.invoices, dateFormat);
     return {
       tabHeader: mode,
       tabContent: [
@@ -102,8 +102,8 @@ export class DashboardChartsComponent implements OnInit, OnChanges {
           chart: expenses
         },
         {
-          chartHeader: "Invoices",
-          chart: invoices
+          chartHeader: "Incomes",
+          chart: incomes
         }
       ]
     };

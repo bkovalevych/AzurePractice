@@ -14,7 +14,7 @@ export class CreateTransactionDialogComponent implements OnInit {
   @Input() visible: boolean;
   @Output() visibleChanged = new EventEmitter<boolean>()
   form: FormGroup;
-  transactionTypes = ['expense', 'invoice'];
+  transactionTypes = [{value: 'expense', label: 'expense'}, {value: 'invoice', label: "income"}];
   errors: string[];
   wallets: WalletValue[] = [];
   topics: TopicValue[] = getTopics();
@@ -64,8 +64,8 @@ export class CreateTransactionDialogComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       walletId: ['', Validators.required],
-      type: [this.transactionTypes[0], Validators.required],
-      topic: ['', Validators.required],
+      type: [this.transactionTypes[0].value, Validators.required],
+      topic: [this.topics[0].name, Validators.required],
       amount: ['', Validators.required],
       tax: ['', Validators.required]
     })
