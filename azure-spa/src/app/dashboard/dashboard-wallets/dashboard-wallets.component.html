@@ -1,1 +1,21 @@
-<p *ngFor="let wallet of wallets">{{wallet.name}}</p>
+<p-carousel *ngIf="wallets && wallets.length" [value]="wallets" [numVisible]="3"
+  [responsiveOptions]="responsiveOptions"
+  [circular]="false">
+  <ng-template let-wallet pTemplate="item">
+      <div class="wallet-item" class="d-flex justify-content-center text-align-center"
+        [ngClass]="{'selected': wallet.id == selectedWallet?.id}">
+          <div class="wallet-item-content">
+              <div class="mb-3" (click)="selectWallet(wallet)">
+                <app-card [wallet]="wallet" [size]="1.3" [selected]="wallet.id == selectedWallet?.id" [interactive]="true"></app-card>
+              </div>
+              <div>
+                  <h4 class="mb-1">{{wallet.name}}</h4>
+                  <h6 class="mt-0 mb-3">${{wallet.balance}}</h6>
+              </div>
+          </div>
+      </div>
+  </ng-template>
+</p-carousel>
+<h3 *ngIf="!wallets || !wallets.length">
+You havent wallets
+</h3>

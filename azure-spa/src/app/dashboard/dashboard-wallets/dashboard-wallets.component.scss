@@ -1,0 +1,12 @@
+.selected {
+  .wallet-item-content {
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(99, 99, 207, 0.819);
+    background: radial-gradient(rgba(207, 121, 99, 0.39), rgba(99, 99, 207, 0.39));
+  }
+}
+
+.wallet-item-content {
+  margin: 10px 0;
+}
+

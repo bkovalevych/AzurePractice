@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { getTopics, TopicValue } from 'src/app/core/models/values/topic-value';
 import { WalletValue } from 'src/app/core/models/values/wallet-value';
 import { WalletService } from 'src/app/core/services/api/wallet.service';
 
@@ -13,9 +14,10 @@ export class CreateTransactionDialogComponent implements OnInit {
   @Input() visible: boolean;
   @Output() visibleChanged = new EventEmitter<boolean>()
   form: FormGroup;
-  transactionTypes = ['expense', 'invoice'];
+  transactionTypes = [{value: 'expense', label: 'expense'}, {value: 'invoice', label: "income"}];
   errors: string[];
   wallets: WalletValue[] = [];
+  topics: TopicValue[] = getTopics();
 
   constructor(private walletService: WalletService,
     private formBuilder: FormBuilder) { }
@@ -62,8 +64,8 @@ export class CreateTransactionDialogComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       walletId: ['', Validators.required],
-      type: [this.transactionTypes[0], Validators.required],
-      topic: ['', Validators.required],
+      type: [this.transactionTypes[0].value, Validators.required],
+      topic: [this.topics[0].name, Validators.required],
       amount: ['', Validators.required],
       tax: ['', Validators.required]
     })

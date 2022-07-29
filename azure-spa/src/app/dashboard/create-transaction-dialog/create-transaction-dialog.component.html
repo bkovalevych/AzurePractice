@@ -6,20 +6,37 @@
     <form [formGroup]="form">
       <div class="row">
         <label class="col-12">Type</label>
-        <p-dropdown styleClass="col-12" appendTo="body" formControlName="type"  [options]="transactionTypes" ></p-dropdown>
+        <p-dropdown styleClass="col-12" appendTo="body" formControlName="type"  [options]="transactionTypes"
+          optionLabel="label"
+          optionValue="value"></p-dropdown>
       </div>
       <div class="row">
         <label class="col-12">Wallet</label>
         <p-dropdown styleClass="col-12" appendTo="body" formControlName="walletId"
           [options]="wallets"
           optionLabel="name"
-          optionValue="id"></p-dropdown>
+          optionValue="id">
+          <ng-template let-wallet pTemplate="item">
+              <div class="d-inline-flex align-items-center">
+                <app-card [size]="0.45" [wallet]="wallet" style="margin-bottom: 20px; margin-right: 5px"></app-card>
+                <div>{{wallet.name}}</div>
+              </div>
+          </ng-template>
+        </p-dropdown>
       </div>
       <div class="row">
         <label class="col-12">Topic</label>
-        <div class="col-12">
-          <input pInputText formControlName="topic" style="width: 100%;"/>
-        </div>
+        <p-dropdown styleClass="col-12" appendTo="body" formControlName="topic"
+          [options]="topics"
+          optionLabel="name"
+          optionValue="name">
+          <ng-template let-topic pTemplate="item">
+            <app-topic [value]="topic"></app-topic>
+          </ng-template>
+          <ng-template let-topic pTemplate="selectedItem">
+            <app-topic [size]="0.75" [value]="topic"></app-topic>
+          </ng-template>
+        </p-dropdown>
       </div>
       <div class="row">
         <label class="col-12">Amount</label>

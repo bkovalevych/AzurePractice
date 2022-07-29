@@ -3,4 +3,5 @@ export class WalletValue {
     name: string;
     userId: string;
     userName: string;
+    balance: number;
 }

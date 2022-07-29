@@ -7,12 +7,13 @@ import { DashboardWalletsComponent } from './dashboard-wallets/dashboard-wallets
 import { CreateTransactionDialogComponent } from './create-transaction-dialog/create-transaction-dialog.component';
 import { SharedModule } from '../shared/shared.module';
 import { DialogModule } from 'primeng/dialog';
-import { DropdownModule } from 'primeng/dropdown'
-import { InputNumberModule } from 'primeng/inputnumber'
-import { InputTextModule } from 'primeng/inputtext'
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
 import { ChartModule } from 'primeng/chart';
 import { DashboardChartsComponent } from './dashboard-charts/dashboard-charts.component';
-import { TabViewModule } from 'primeng/tabview'
+import { TabViewModule } from 'primeng/tabview';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TabViewModule } from 'primeng/tabview'
     InputNumberModule,
     InputTextModule,
     ChartModule,
-    TabViewModule
+    TabViewModule,
+    CarouselModule
   ]
 })
 export class DashboardModule { }
