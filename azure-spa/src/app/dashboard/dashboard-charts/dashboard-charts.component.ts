@@ -43,7 +43,7 @@ export class DashboardChartsComponent implements OnInit, OnChanges {
         firstDayOfMonth.setMinutes(0);
         firstDayOfMonth.setSeconds(0);
         let days3 = 60 * 60 * 24 * 3;
-        return {date: firstDayOfMonth, range: days3, dateFormat: 'YYYY/MM/d'};
+        return {date: firstDayOfMonth, range: days3, dateFormat: 'YYYY/MM/DD'};
       case 'day':
         let dayBefore = new Date();
         dayBefore.setHours(0);

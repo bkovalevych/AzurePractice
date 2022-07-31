@@ -12,14 +12,18 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { DialogModule } from 'primeng/dialog'
 import { AutoCompleteModule } from 'primeng/autocomplete'
-import { CreateChatComponent } from './overlays/create-wallet/create-wallet.component'
+import { CreateChatComponent } from './overlays/create-wallet/create-wallet.component';
+import { WalletTransactionsComponent } from './wallet-transactions/wallet-transactions.component'
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
     HomeIndexComponent,
-    CreateChatComponent
+    CreateChatComponent,
+    WalletTransactionsComponent
   ],
   imports: [
+    TableModule,
     CommonModule,
     HomeRoutingModule,
     SharedModule,

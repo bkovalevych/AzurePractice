@@ -1,11 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
+import { forkJoin, of, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreateWalletRequest } from '../../models/requests/create-wallet-request';
 import { CreateWalletTransaction } from '../../models/requests/create-wallet-transaction-request';
 import { ChartTimeUnitValue, ChartUnitValue } from '../../models/values/chart-unit-value';
 import { PerformedWalletTransactionResponse } from '../../models/values/performed-wallet-transaction-response';
+import { TransactionValue } from '../../models/values/transaction-value';
 import { WalletValue } from '../../models/values/wallet-value';
 
 @Injectable({
@@ -59,6 +61,24 @@ export class WalletService {
         code: environment.functionsKey
       });
     return this.http.get<ChartTimeUnitValue[]>(`${environment.functionsUrl}/TimeCharts`, { params: query })
+  }
+
+  getTransactions(fromTimestamp: Date, toTimestamp: Date) {
+    return this.getWallets()
+      .pipe(
+        switchMap(wallets =>
+          forkJoin({
+            transactions: this.http.get<TransactionValue[]>(`${environment.functionsUrl}/Transactions`,
+            {
+              params: new HttpParams()
+              .appendAll({
+                walletIds: wallets.map(it => it.id),
+                fromTimespan: this.toUnixSeconds(fromTimestamp),
+                toTimespan: this.toUnixSeconds(toTimestamp),
+                code: environment.functionsKey
+              })
+            }),
+            wallets: of(wallets)})));
   }
 
   private toUnixSeconds(date: Date) {
