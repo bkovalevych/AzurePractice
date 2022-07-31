@@ -30,7 +30,7 @@ export class WalletService {
 
   getWallets() {
     let acc = this.auth.instance.getActiveAccount();
-    let url = `${environment.functionsUrl}/Wallets?userId=${acc.localAccountId}&code=${environment.functionsKey}`;
+    let url = `${environment.functionsUrl}/Wallets/${acc.localAccountId}?code=${environment.functionsKey}`;
     return this.http.get<WalletValue[]>(url);
   }
 
@@ -40,7 +40,6 @@ export class WalletService {
   }
 
   getCharts(walletIds: string[], fromTimestamp: Date, toTimestamp: Date) {
-
     let query = new HttpParams()
       .appendAll({
         walletIds: walletIds,

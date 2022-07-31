@@ -58,7 +58,7 @@ export class DashboardChartsComponent implements OnInit, OnChanges {
         firstDayOfWeek.setMinutes(0);
         firstDayOfWeek.setSeconds(0);
         let day = 60 * 60 * 24;
-        return {date: firstDayOfWeek, range: day, dateFormat: 'MM/d'};
+        return {date: firstDayOfWeek, range: day, dateFormat: 'MM/DD'};
     }
   }
 
