@@ -8,6 +8,6 @@ export const environment = {
   },
   graphUrl: 'https://graph.microsoft.com/v1.0/me',
   functionsUrl: 'https://azurepracticecreatewalletfunction20220713112026.azurewebsites.net/api',
-  functionsKey: 'xirPwkfpgFSbBWuh5fqrVdFFcg2_zg8tBHiEpyOaDkwCAzFuRcZe6Q==',
+  functionsKey: '7XO5vQs-gnNW4p2Cj85LXSQ_5E3ytMtW32_Ih22F18I_AzFulpGShA==',
   performTransactionUrl: 'https://prod-219.westeurope.logic.azure.com:443/workflows/02b6970546f94559952bce1025a537a2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=AM8kH3ODtcKS3zg2k0krmQBWgkpPWZkuYZ04pkJcfXY'
 };
